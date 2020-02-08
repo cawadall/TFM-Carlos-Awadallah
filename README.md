@@ -187,7 +187,8 @@ GRANT ALL PRIVILEGES ON *.* TO '<user>'@'localhost';
 FLUSH PRIVILEGES;
 ```
 
-**NOTA**: Con el usuario y la base de datos creados, puede resultar interesante rellenar las tablas de la nueva Base de Datos con una copia funcional del estado actual de la aplicación. Para ello, contactar con el administrador (carlosawadallah@gmail.com). Una vez se disponga de la copia, ejecutar lo siguiente: `mysql -u <user> -p <database> < copia.sql`
+**NOTA**: Con el usuario y la base de datos creados, puede resultar interesante rellenar las tablas de la nueva Base de Datos con una copia funcional del estado actual de la aplicación. Para ello, contactar con el administrador (carlosawadallah@gmail.com). Una vez se disponga de la copia, ejecutar lo siguiente:
+`mysql -u <user> -p <database> < copia.sql`
 
 <a name="4.2.3-instalacion-django-dependencias"></a>
 #### 4.2.3. Instalación de Django y Dependencias.
