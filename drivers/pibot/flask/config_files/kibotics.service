@@ -1,0 +1,14 @@
+[Unit]
+Description=FlaskRUN
+After=multi-user.target
+
+[Service]
+ype=idle
+#ExecStart=/usr/bin/python3 /home/pi/infraestructura/piBot/descargaLocal/kibotics.py
+
+# Path to virtual environment
+ExecStart=/home/pi/infraestructura/piBot/descargaLocal/flask-venv/bin/python3 /home/pi/infraestructura/piBot/descargaLocal/kibotics.py
+
+
+[Install]
+WantedBy=multi-user.target

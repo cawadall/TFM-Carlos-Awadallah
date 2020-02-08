@@ -1,0 +1,125 @@
+{% load static %} <!-- Cargamos los archivos estaticos -->
+
+<style type="text/css">
+
+    .image_viewer {
+	    margin: 0 auto;
+        padding: 20px;
+	    border: 10px double #ddd;
+        -moz-box-shadow: 0px 0px 10px gray; /* FF3.5+ */
+        -webkit-box-shadow: 5px 44px 28px gray; /* Saf3.0+, Chrome */
+        box-shadow: 0px 0px 10px gray; /* Opera 10.5, IE 9.0 */
+    }
+    .connection-state {
+        color: white;
+        padding: 5px;
+    }
+    .connected {background-color: #7afb7c;}
+    .not-connected {background-color: #fa3f0d;}
+</style>
+
+<div id="gui" class="col-xs-12 " style="padding:0px 0px 0px 0px; height:290px; display:block">
+    <center>
+        <fieldset>
+            <legend>Camera Image</legend>
+            <img id="camera_image1" class="image_viewer" src="{% static 'python/color_filter/img/no_img.png' %}" alt="Camera" style="height:100%; width:auto;">
+        </fieldset>
+        <fieldset>
+            <legend>Processed Image</legend>
+            <img id="camera_image2" class="image_viewer" src="{% static 'python/color_filter/img/no_img.png' %}" alt="Camera" style="height:100%; width:auto;">
+        </fieldset>
+        <h3><span id = "connection" class="connection-state not-connected">Not connected to the camera</span></h3>
+    </center>
+</div>
+
+<script type="text/javascript">
+
+   var img_camera, img_algorithm;
+   var wsUri1 = "{{gui_url}}"
+   var wsUri2 = "{{cam_url}}"
+
+   function init() {
+      img_camera = document.getElementById("camera_image1");
+      img_algorithm = document.getElementById("camera_image2");
+      algorithmWebSocket();
+      cameraWebSocket();
+   }
+		
+   function algorithmWebSocket() {
+
+      websocket = new WebSocket(wsUri1);
+			
+      websocket.onopen = function(evt) {
+          onOpen(evt)
+      };
+		
+      websocket.onmessage = function(evt) {
+          onMessage(evt)
+      };
+		
+      websocket.onerror = function(evt) {
+         console.error(evt.data);
+      };
+
+      websocket.onclose = function (evt) {
+         // Connection closed.
+         // Firstly, check the reason.
+         if (evt.code != 1000) {
+            onError(evt);
+         }
+      }
+   }
+    
+   function cameraWebSocket() {
+
+      websocket = new WebSocket(wsUri2);
+			
+      websocket.onopen = function(evt) {
+          onOpen(evt)
+      };
+		
+      websocket.onmessage = function(evt) {
+          onMessageC(evt)
+      };
+		
+      websocket.onerror = function(evt) {
+         console.error(evt.data);
+      };
+
+      websocket.onclose = function (evt) {
+         // Connection closed.
+         // Firstly, check the reason.
+         if (evt.code != 1000) {
+            onError(evt);
+         }
+      }
+   }
+		
+   function onOpen(evt) {
+      console.log("CONNECTED");
+      conn_label = document.getElementById('connection');
+      conn_label.classList.add("connected");
+      conn_label.classList.remove("not-connected");
+      conn_label.innerHTML = "Connected";
+   }
+   
+   function onMessage(evt) {
+      //console.log(evt.data);
+      img_algorithm.src = evt.data; 
+   }
+
+   function onMessageC(evt) {
+      console.log(evt.data);
+      img_camera.src = evt.data; 
+   }
+
+   function onError(evt) {
+      console.error(evt.data);
+      setTimeout(function() {
+         init();
+      },500);
+   }
+		
+   window.addEventListener("load", init, false);
+
+</script>

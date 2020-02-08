@@ -1,0 +1,145 @@
+{% extends "local_execution_app/base.html" %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+
+
+{% if authenticate %}
+
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 text-center container">
+        {% if user.exercises.all %}
+            <div class="panel panel-default">
+                <div class="panel-heading"><b>{% trans "Set de Ejercicios en Ejecución Mixta" %}</b></div>
+                <div class="panel-body center-block">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                        {% for exercise in user.exercises.all %}
+                            <tbody style="vertical-align: middle;">
+                                <tr>
+                                    <td><b>{{ exercise.name }}</b></td>
+                                    <td><button id=Formulation_{{exercise.exercise_id}} type="button" data-toggle="modal" data-target="#Formulation_{{exercise.exercise_id}}" ><img src="{% static '/'%}{{ exercise.language }}/{{ exercise.exercise_id }}/img/{{exercise.thumbnail}}" width="200" height="100" style="border-radius: 5p; text-align: center"></button></td>
+                                    
+                                    {% if exercise.platform == "gazebo" or exercise.platform == "vision" or exercise.platform == "real"%}
+                                        {% if exercise.state == "active" %}
+                                            {% if exercise.get_observations.MixedExecution %}
+                                                {% if exercise.platform == "real" %}
+                                                    <td><a class="btn btn-simulation btn-responsive" style="height: 50px; padding: 15px;" data-toggle="modal" data-target="#MixedExecution_{{exercise.exercise_id}}"> {% trans "Ejecución Local Real" %}</a></td>
+                                                {% else %}
+                                                    <td><a class="btn btn-simulation btn-responsive" style="height: 50px; padding: 15px;" data-toggle="modal" data-target="#MixedExecution_{{exercise.exercise_id}}"> {% trans "Simulación Local" %}</a></td>
+                                                {% endif %}
+                                                <!-- Mixed Execution Modal -->
+                                                <div class="modal fade text-center" id="MixedExecution_{{exercise.exercise_id}}" role="dialog">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title"><strong>{% trans "Ejercicios en Ejecución Mixta" %}</strong></h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>{% trans "Esta plataforma ofrece a sus usuarios la posibilidad de usar la 'Ejecución Mixta' para ejecutar cualquier ejercicio de ingeniería robótica y visión haciendo uso de su propio hardware a través de la aplicación web. ¡Con ello podrás hacer que el código funcione en tu propio robot/sensor conectado a través de un puerto USB a tu equipo!" %}</p>
+                                                                <hr class="primary">
+                                                                <h3>{% trans "Instalación" %}</h3>
+                                                                <p>{% trans "Descarga la Imagen Docker para Ejecución Mixta que cofigurará todo lo necesario en tu sistema" %}</p>
+                                                                <p><i> docker pull tfmdocker/local:dev </i></p>
+                                                                <p>{% trans "Esto puede tardar. Sólo es necesario seguir este paso la primera vez." %}</p>
+                                                                <!--</div>-->
+                                                                <hr class="primary">
+                                                                <h3>{% trans "Uso" %}</h3>
+                                                                <div class="col-xs-12">
+                                                                    <h4 class="col-xs-11 ">{% trans "Ejecuta un contenedor Docker con la siguiente instrucción" %}</h4>
+                                                                    <button type="button" class="col-xs-1 btn btn-default" aria-label="Left Align" onclick="copyToClipboard('docker_command_{{exercise.exercise_id}}')">
+                                                                        <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                                                                    </button>
+                                                                </div>                                                                 
+                                                                <br> 
+                                                                <p id="docker_command_{{exercise.exercise_id}}"><i>{{exercise.get_observations.MixedExecution}}</i></p><br>
+                                                                {% if exercise.get_observations.Competitive %}
+                                                                    <form action="{% url 'competitive' %}" method="post" accept-charset="utf-8">{% csrf_token %}
+                                                                {% else %}
+                                                                    <form action="{% url 'local' %}" method="post" accept-charset="utf-8">{% csrf_token %}
+                                                                {% endif %}                                                     
+                                                                        <textarea id="ex_name" name="exercise" cols="30" rows="1" style="display:none">{{ exercise.exercise_id }}</textarea>
+                                                                      <!-- default port 8888 -->
+                                                                      <fieldset>
+                                                                        <textarea id="jupyter_server_port_{{exercise.exercise_id}}" name="port" cols="11" rows="1" style="display:none">8888</textarea>
+                                                                      </fieldset>
+                                                                      <input id="connect" class="btn btn-default" type="submit" value="{% trans 'Conectar' %}"></input>
+                                                                      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#MixedExecution_{{exercise.exercise_id}}_settings">{% trans "Opciones" %}</button>
+                                                                    </form>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Cerrar" %}</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal fade text-center" id="MixedExecution_{{exercise.exercise_id}}_settings" role="dialog">
+                                                    <div class="modal-dialog">
+                                                        <!-- Modal content-->
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title"><strong>{% trans "PREFERENCIAS" %}</strong></h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <h4>{% trans "Selecciona el puerto en el que se ejecutará el Servidor de Jupyter" %}</h4><br>
+                                                                  <fieldset>
+                                                                    <legend >{% trans "Introduce el puerto" %}</legend>
+                                                                    <textarea id="custom_port_{{exercise.exercise_id}}" cols="6" rows="1" placeHolder="8888"></textarea>
+                                                                  </fieldset>
+                                                                  
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="changePort(this)" _command="{{exercise.get_observations.MixedExecution}}" _ex="{{exercise.exercise_id}}">{% trans "OK" %}</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endif %}
+                                        <td>
+                                            <p><strong>{% trans "Descripción del ejercicio" %}</strong><br>
+                                            <p style="color: #884bd6"><strong>{{ exercise.description | safe }}</strong></p>
+                                        </td>
+                                </tr>
+                            </tbody>
+
+                            
+                        {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        <script type="text/javascript">
+            
+            // Jupyter Server Port configurable
+            function changePort(obsv) {
+                var cmd = obsv.getAttribute("_command");
+                var ex_id = obsv.getAttribute("_ex");
+                new_port = document.getElementById('custom_port_'+ex_id).value;
+                document.getElementById('jupyter_server_port_'+ex_id).value = new_port;
+                document.getElementById('docker_command_'+ex_id).innerHTML = "<i>" + cmd.split(':8888')[0].split('-p ')[0] + '-p ' + cmd.split(':8888')[0].split('-p ')[1] + '-p ' + new_port + ':8888' + cmd.split(':8888')[1] + "</i>";
+            }
+
+            function copyToClipboard(id_element) {
+                var range = document.createRange();
+                    range.selectNode(document.getElementById(id_element));
+                    window.getSelection().removeAllRanges();
+                    window.getSelection().addRange(range);
+                    document.execCommand("copy");
+                    window.getSelection().removeAllRanges();
+            }
+            
+        </script>
+    </div>
+
+    {% if exit_mixed_execution %}
+        <script id="jupyter" src="{% static 'js/mixed_execution/logout.js' %}" _ip={{ip_address}} _port={{port}} _session={{session}} _files={{file_names}}></script>
+    {% endif %}
+
+
+{% endif %}
+{% endblock %}

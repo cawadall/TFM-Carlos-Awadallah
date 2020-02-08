@@ -1,0 +1,434 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-13 02:59-0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: jderobot_kids/templates/jderobot_kids/base.html:38
+msgid "Ver Código"
+msgstr "View Code"
+
+#: jderobot_kids/templates/jderobot_kids/base.html:40
+#: jderobot_kids/templates/jderobot_kids/base.html:42
+#: jderobot_kids/templates/jderobot_kids/base.html:52
+msgid "Salir del Ejercicio"
+msgstr "Exit from Exercise"
+
+#: jderobot_kids/templates/jderobot_kids/base.html:45
+msgid "Ver Árbitro"
+msgstr "View Referee"
+
+#: jderobot_kids/templates/jderobot_kids/base.html:55
+msgid "Registrate"
+msgstr "Sign Up"
+
+#: jderobot_kids/templates/jderobot_kids/base.html:61
+#, fuzzy
+#| msgid "Versión 1.4.0"
+msgid "Versión Test"
+msgstr "Release 1.4.0"
+
+#: jderobot_kids/templates/jderobot_kids/base.html:81
+msgid "Cerrar Sesión"
+msgstr "Logout"
+
+#: jderobot_kids/templates/jderobot_kids/base.html:98
+#: jderobot_kids/templates/jderobot_kids/local.html:15
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:17
+msgid "¿Has guardado los cambios?"
+msgstr "Have you saved the changes?"
+
+#: jderobot_kids/templates/jderobot_kids/base.html:103
+msgid ""
+"¿Estás seguro de que quieres salir de la simulación? Se perderán los cambios "
+"que no hayan sido guardados"
+msgstr ""
+"Are you sure you want to get out of the simulation? The changes will be lost "
+"which have not been saved"
+
+#: jderobot_kids/templates/jderobot_kids/base.html:109
+msgid "Sí, he guardado. Salir."
+msgstr "Yes, I have. Go out."
+
+#: jderobot_kids/templates/jderobot_kids/base.html:110
+msgid "No, aún no he guardado, volver."
+msgstr "No, I haven't saved yet, go back."
+
+#: jderobot_kids/templates/jderobot_kids/base.html:132
+msgid "Terminar todas las simulaciones"
+msgstr "Finish all simulations"
+
+#: jderobot_kids/templates/jderobot_kids/base.html:137
+msgid "Todas las simulaciones activas terminarán. ¿Estás seguro?"
+msgstr "All active simulations will end. Are you sure?"
+
+#: jderobot_kids/templates/jderobot_kids/base.html:142
+msgid "Sí, terminar todas las simulaciones"
+msgstr "Yes, finish all simulations"
+
+#: jderobot_kids/templates/jderobot_kids/base.html:143
+#: jderobot_kids/templates/jderobot_kids/local.html:28
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:30
+msgid "No, volver atrás"
+msgstr "No, go back"
+
+#: jderobot_kids/templates/jderobot_kids/base.html:155
+msgid "Terminar Simulaciones"
+msgstr "Finish Simulations"
+
+#: jderobot_kids/templates/jderobot_kids/local.html:18
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:20
+msgid ""
+"Asegúrate de haber guardado todos los cambios en tu cuadernillo pulsando"
+msgstr "Make sure you have saved the changes made in the Notebook by pressing"
+
+#: jderobot_kids/templates/jderobot_kids/local.html:18
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:20
+msgid "sobre él"
+msgstr "on it"
+
+#: jderobot_kids/templates/jderobot_kids/local.html:26
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:28
+msgid "Sí, continuar"
+msgstr "Yes, continue"
+
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:45
+msgid "Jugador 1"
+msgstr "Player 1"
+
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:49
+msgid "Jugador 2"
+msgstr "Player 2"
+
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:61
+msgid "<strong>Jugador 1</strong> <br>McLaren"
+msgstr "<strong>Player 1</strong> <br>McLaren"
+
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:62
+msgid "<strong>Jugador 2</strong> <br>Tororosso"
+msgstr "<strong>Player 2</strong> <br>Tororosso"
+
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:63
+msgid "<strong>¡EMPEZAR!</strong>"
+msgstr "<strong>¡START!</strong>"
+
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:74
+msgid "Jugador 1 - McLaren"
+msgstr "Player 1 - McLaren"
+
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:79
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:101
+msgid "Introduce tu nombre de usuario de Unibotics"
+msgstr "Introduce your username at Unibotics"
+
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:84
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:106
+msgid "Seleccionar"
+msgstr "Select"
+
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:96
+msgid "Jugador 2 - Tororosso"
+msgstr "Player 2 - Tororosso"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:12
+#, fuzzy
+#| msgid "Ejercicios en Ejecución Mixta"
+msgid "Set de Ejercicios en Ejecución Mixta"
+msgstr "Mixed Execution Exercises"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:25
+#: jderobot_kids/templates/jderobot_kids/main_page.html:29
+msgid "Ir a Cuadernillo"
+msgstr "Go to the Notebook"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:27
+#: jderobot_kids/templates/jderobot_kids/main_page.html:38
+msgid "Robot Real"
+msgstr "Real Robot"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:35
+msgid "Robot Simulado"
+msgstr "Remote Simulation"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:42
+msgid "Simulación Local"
+msgstr "Local Smulation"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:50
+msgid "Ejercicios en Ejecución Mixta"
+msgstr "Mixed Execution Exercises"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:53
+msgid ""
+"Unibotics ofrece a sus usuarios la posibilidad de usar la 'Ejecución Mixta' "
+"para ejecutar cualquier ejercicio de ingeniería robótica y visión haciendo "
+"uso de su propio hardware a través de la aplicación web. ¡Con ello podrás "
+"hacer que el código funcione en tu propio robot/sensor conectado a través de "
+"un puerto USB a tu equipo!"
+msgstr ""
+"Unibotics offers its clients to use the 'Mixed Execution' tool that allows "
+"them to run any robotics engineering and computer vision exercise making use "
+"of their own hardware through the web application. With that, you will be "
+"able to get the code to run within your robot/sensor connected via USB to "
+"your machine!"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:55
+msgid "Instalación"
+msgstr "Installation"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:56
+msgid ""
+"Descarga la Imagen Docker para Ejecución Mixta que cofigurará todo lo "
+"necesario en tu sistema"
+msgstr ""
+"Download the Mixed Executon docker Image that will set up everything needed "
+"in your system"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:58
+msgid "Esto puede tardar. Sólo es necesario seguir este paso la primera vez."
+msgstr "This may take a while. You only need to follow this step once."
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:61
+msgid "Uso"
+msgstr "Usage"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:63
+msgid "Ejecuta un contenedor Docker con la siguiente instrucción"
+msgstr "Run a docker container through the next instruction"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:86
+msgid "Conectar"
+msgstr "Connect"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:87
+msgid "Opciones"
+msgstr "Options"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:91
+msgid "Cerrar"
+msgstr "Close"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:102
+msgid "PREFERENCIAS"
+msgstr "PREFERENCES"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:105
+msgid "Selecciona el puerto en el que se ejecutará el Servidor de Jupyter"
+msgstr "Select the port where the Jupyter Notebook Server will be launched"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:108
+msgid "Introduce el puerto"
+msgstr "Input port"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:114
+msgid "OK"
+msgstr "OK"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:123
+#, fuzzy
+#| msgid "Foro del ejercicio"
+msgid "Descripción del ejercicio"
+msgstr "Exercise Forum"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:178
+msgid "Inicio de Sesión"
+msgstr "Log In"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:189
+msgid "Nombre de Usuario"
+msgstr "Username"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:190
+msgid "Contraseña"
+msgstr "Password"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:191
+msgid "Iniciar Sesión"
+msgstr "Log In"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:195
+msgid "¿Has olvidado tu contraseña?"
+msgstr "Forgot your password?"
+
+#: jderobot_server/settings.py:161
+msgid "Spanish"
+msgstr "Spanish"
+
+#: jderobot_server/settings.py:162
+msgid "English"
+msgstr "English"
+
+#~ msgid "Máximo 30 caracteres. Letras, números y @/./+/-/_ permitidos."
+#~ msgstr "Maximum 30 characters. Letters, numbers and @/./+/-/_ allowed."
+
+#~ msgid "Se le enviará un correo de confirmación a esta dirección."
+#~ msgstr "A confirmation email will be sent to this address."
+
+#~ msgid "Mínimo 6 caracteres."
+#~ msgstr "Minimum 6 characters."
+
+#~ msgid "Confirme su contraseña."
+#~ msgstr "Confirm Password"
+
+#~ msgid "Página Principal"
+#~ msgstr "Home"
+
+#~ msgid "Generador de Códigos"
+#~ msgstr "View Code"
+
+#~ msgid "Generar Códigos"
+#~ msgstr "View Code"
+
+#~ msgid "Acceso al Foro"
+#~ msgstr "Access to the Forum"
+
+#~ msgid "Usuarios"
+#~ msgstr "Users"
+
+#~ msgid "¡Pruébala!"
+#~ msgstr "Try it out!"
+
+#~ msgid "¡Próximamente!"
+#~ msgstr "Coming soon!"
+
+#~ msgid "¿En qué consiste esta práctica?"
+#~ msgstr "What is this practice?"
+
+#~ msgid "Video demostración de %(exercise.name)s"
+#~ msgstr "Video demonstration of %(exercise.name)s"
+
+#~ msgid "Ejercicios"
+#~ msgstr "Exercises"
+
+#~ msgid "Registro en Unibotics"
+#~ msgstr "Registration at Unibotics"
+
+#~ msgid "Nombre"
+#~ msgstr "Name"
+
+#~ msgid "Apellidos"
+#~ msgstr "Surname(s)"
+
+#~ msgid "Email"
+#~ msgstr "Email"
+
+#~ msgid "Código de Registro (Obligatorio)"
+#~ msgstr "Registration Code (Required)"
+
+#~ msgid "Confirmar Contraseña"
+#~ msgstr "Confirm Password"
+
+#~ msgid "Acepto los"
+#~ msgstr "I accept the"
+
+#~ msgid "Términos y Condiciones de uso"
+#~ msgstr "Terms of Service"
+
+#~ msgid "Registrarse"
+#~ msgstr "Sign In"
+
+#~ msgid "Volver a la página principal"
+#~ msgstr "Home"
+
+#~ msgid "Rol"
+#~ msgstr "Role"
+
+#~ msgid "Último Inicio de Sesión"
+#~ msgstr "Last Login"
+
+#~ msgid "Fecha de Registro"
+#~ msgstr "Date Joined"
+
+#~ msgid "Restablecer contraseña"
+#~ msgstr "Password reset"
+
+#~ msgid ""
+#~ "Su contraseña ha sido restablecida. Ya puede entrar en la aplicación."
+#~ msgstr "Your password has been set.  You may go ahead and log in now."
+
+#~ msgid "Log in"
+#~ msgstr "Log in"
+
+#~ msgid "Confirmación de restablecimiento de contraseña"
+#~ msgstr "Password reset confirmation"
+
+#~ msgid ""
+#~ "Por favor, introduzca su nueva contraseña dos veces para que podamos "
+#~ "verificar que la ha escrito correctamente."
+#~ msgstr ""
+#~ "Please enter your new password twice so we can verify you typed it in "
+#~ "correctly."
+
+#~ msgid "Nueva Contraseña:"
+#~ msgstr "New Password"
+
+#~ msgid "Confirmar Contraseña:"
+#~ msgstr "Confirm Password"
+
+#~ msgid "Restablecer Contraseña"
+#~ msgstr "Change my password"
+
+#~ msgid ""
+#~ "El enlace de restablecimiento de contraseña no era válido, posiblemente "
+#~ "porque ya se ha utilizado. Por favor, solicite un nuevo restablecimiento "
+#~ "de contraseña."
+#~ msgstr ""
+#~ "The password reset link was invalid, possibly because it has already been "
+#~ "used.  Please request a new password reset."
+
+#~ msgid ""
+#~ "Te hemos enviado por correo electrónico instrucciones para restablecer tu "
+#~ "contraseña, si existe una cuenta con el correo electrónico que has "
+#~ "ingresado. Los recibirá en breve."
+#~ msgstr ""
+#~ "We've emailed you instructions for setting your password, if an account "
+#~ "exists with the email you entered. You should receive them shortly."
+
+#~ msgid ""
+#~ "Si no recibes un correo electrónico, asegúrate de que has introducido la "
+#~ "dirección con la que te registraste y comprueba tu carpeta de spam."
+#~ msgstr ""
+#~ "If you don't receive an email, please make sure you've entered the "
+#~ "address you registered with, and check your spam folder."
+
+#~ msgid ""
+#~ "Has recibido este correo electrónico porque has solicitado un "
+#~ "restablecimiento de contraseña para tu cuenta de usuario en %(site_name)s."
+#~ msgstr ""
+#~ "You're receiving this email because you requested a password reset for "
+#~ "your user account at %(site_name)s."
+
+#~ msgid "Por favor, vaya a la página siguiente y elija una nueva contraseña:"
+#~ msgstr "Please go to the following page and choose a new password:"
+
+#~ msgid "Su nombre de usuario, en caso de que lo haya olvidado:"
+#~ msgstr "Your username, in case you've forgotten:"
+
+#~ msgid "Gracias por usar nuestro sitio!"
+#~ msgstr "Thanks for using our site!"
+
+#~ msgid "El equipo de %(site_name)s"
+#~ msgstr "The %(site_name)s team"
+
+#~ msgid ""
+#~ "¿Olvidó su contraseña? Ingrese su dirección de correo electrónico a "
+#~ "continuación, y le enviaremos instrucciones para establecer una nueva."
+#~ msgstr ""
+#~ "Forgotten your password? Enter your email address below, and we'll email "
+#~ "instructions for setting a new one."
+
+#~ msgid "Dirección de Correo Electrónico:"
+#~ msgstr "Email address:"

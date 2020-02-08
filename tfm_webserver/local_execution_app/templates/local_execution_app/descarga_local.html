@@ -1,0 +1,67 @@
+{% load static %} <!-- Cargamos los archivos estaticos -->
+
+
+<div style="margin-top: 20%">
+    <h3>Descarga tu código y enviarlo al PiBot.</h3>
+
+    <div class="text-center">
+        <img class="text-center" src="{% static 'img/pibot-descarga_local.png' %}" width="300px" height="250px">
+    </div>
+
+    <div class="text-center">
+        <a id="downloadCode" class="btn btn-primary btn-lg" onclick="download_code()" target="_blank">Descargar código</a>
+        <a id="sendToPi" class="btn btn-success btn-lg" href="http://10.3.141.1:8001" target="_blank">Enviar al PiBot</a>
+    </div>
+    <a class="btn btn-default" href="http://10.3.141.1/index.php?page=hostapd_conf" style="position: fixed; bottom: 0px; right: 0px;" target="_blank"><span class="glyphicon glyphicon-cog"></span></a>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
+<script id="download" nb='{{notebook}}'>
+    function download_code() {
+        var _ip = '{{ip_address}}';
+        var _port = '{{port}}';
+        var notebook = JSON.parse(document.getElementById("download").getAttribute("nb"));
+        var nbname = notebook[0];
+
+        const url = 'http://'+_ip+':'+_port+'/api/contents/' + nbname;
+        const message = {
+                headers:{
+                         //'Authorization': 'token ' + _token,
+                        },
+                method:"GET"
+        };
+        fetch(url,message)
+            .then(data=>{return data.json()})
+            .then(res=>{
+                console.log(res);
+                filled_notebook = res.content;
+                console.log(filled_notebook);
+                console.log(JSON.stringify(filled_notebook));
+                const url = '/download_exercise/{{exercise.exercise_id}}';
+                const data_post = JSON.stringify({'codigo': JSON.stringify(filled_notebook)});
+                const message = {
+                        headers: { "X-CSRFToken": Cookies.get('csrftoken') }, 
+                        body:data_post,
+                        method:"POST"
+                };
+                fetch(url,message)
+                    .then(resp=>{
+                        resp.blob().then(blob => {
+                            var a = document.createElement("a");
+                            document.body.appendChild(a);
+                            a.style = "display: none";
+                            zip_url = window.URL.createObjectURL(blob);
+                            a.href = zip_url;
+                            a.download = 'PiBot.zip';
+                            a.click();
+                            window.URL.revokeObjectURL(zip_url)
+                        })
+                        console.log("Executable downloaded");
+                    
+                    })
+                    .catch(error=>console.log(error))
+                
+            })
+            .catch(error=>console.log(error))
+
+    }
+</script>

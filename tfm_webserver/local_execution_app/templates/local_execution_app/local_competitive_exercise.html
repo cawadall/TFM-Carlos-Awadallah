@@ -1,0 +1,140 @@
+{% extends "local_execution_app/base.html" %}
+{% load static %}
+{% load i18n %} <!-- Cargamos el módulo de Internacionalización -->
+{% block content %}
+
+<link rel="stylesheet" href='{% static "css/theory.css" %}'>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.13.1/js-yaml.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script id="jupyter" src="{% static 'js/mixed_execution/local_competitive.js' %}" _ip={{ip_address}} _port={{port}} codefile='{{codefile}}' configfile='{{configfile}}' assets='{{assets}}' coordinator_url='{{coordinator_url}}' exercise={{exercise.exercise_id}} tpc1={{exercise.get_observations.Competitive.tpc1}} tpc2={{exercise.get_observations.Competitive.tpc2}} nodename={{exercise.get_observations.Competitive.nodename}}></script>
+
+<div id="save_modal" class="col-xs-6 col-xs-offset-3 modal text-center" style="display:none">
+     <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2 id="help" align="center">{% trans "¿Has guardado los cambios?" %}</h2>
+      </div>
+      <div class="modal-body">
+        <p> {% trans "Asegúrate de haber guardado todos los cambios en tu cuadernillo pulsando" %} <span id="save">Ctrl + S</span> {% trans "sobre él" %} </p>
+        <form action="{% url 'exit_local' %}" method="post" accept-charset="utf-8">{% csrf_token %}
+          <textarea id="exercise_id" name="exercise_id" cols="2000" rows="2000" style='display:none'>{{exercise.exercise_id}}</textarea>
+          <textarea id="fillednb" name="filledNotebook" cols="2000" rows="2000" style='display:none'></textarea>
+          <textarea id="session" name="kernelSession" cols="100" rows="1" style='display:none'></textarea>
+          <textarea id="files2delete" name="files2delete" cols="200" rows="1" style='display:none'></textarea>
+      </div>
+      <div class="modal-footer">
+            <input id="connect" class="btn btn-default" type="submit" value="{% trans 'Sí, continuar' %}"></input>
+        </form>
+        <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "No, volver atrás" %}</button>
+      </div>
+    </div>
+</div>
+
+{% if simulation_type == "local" %}
+    <!-- THEORY -->
+    <div id="theory_column" class="col-md-6" style="padding:0px 0px 0px 0px; height: calc(100vh - 72px); display:block;">
+        <div class="col-md-12" width="100%" height="100%" frameBorder="0" style="max-height: 100%; overflow-y: scroll;">
+            {% include exercise.language|add:"/"|add:exercise.exercise_id|add:"/templates/"|add:exercise.exercise_id|add:"_theory.html" %} 
+        </div>
+    </div>
+    <!-- Jupyter -->
+    <div id="jupyter_column" class="col-md-6 col" style="padding:0px 0px 0px 0px; height: calc(100vh - 72px); display:none;">
+        <fieldset style="margin-left:10px;">
+            <legend>{% trans "Jugador 1" %}</legend>
+            <iframe id="ifr1" class="col-md-12" width="100%" style="height:calc(45vh - 72px);" frameBorder="0" src=''></iframe>
+        </fieldset>
+        <fieldset style="margin-left:10px;">
+            <legend>{% trans "Jugador 2" %}</legend>
+            <iframe id="ifr2" class="col-md-12" width="100%" style="height:calc(45vh - 72px);" frameBorder="0" src=''></iframe>
+        </fieldset>
+    </div>
+    <!-- GAZEBO (gzweb) -->
+    <div id="gazebo_column" class="col-md-6" style="padding:0px 0px 0px 0px; height: calc(90vh - 72px)">
+        {% if gui %}
+            {% include exercise.language|add:"/"|add:exercise.exercise_id|add:"/templates/"|add:exercise.exercise_id|add:".html" %} 
+        {% else %}
+            <iframe class="col-md-12" width="100%" height="100%" frameBorder="0" src='{{gzweb_url}}'></iframe>
+        {% endif %}
+            <div class="col-md-12" width="100%" style="height: 10vh; margin:0px 15px 0px 15px">
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal_player1" style="margin: 5px 0px 0px 5px;display:inline-block;width:30%;height:85%;">{% trans "<strong>Jugador 1</strong> <br>McLaren" %}</button> 
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal_player2" style="margin: 5px 0px 0px 5px;display:inline-block;width:30%;height:85%;">{% trans "<strong>Jugador 2</strong> <br>Tororosso" %}</button> 
+                <button type="button" class="btn btn-default" onclick="Coordinate_Start()" style="margin: 5px 0px 0px 5px; background: #78f389;display:inline-block;width:30%;height:85%;">{% trans "<strong>¡EMPEZAR!</strong>" %}</button> 
+            </div>
+    </div>
+{% endif %}
+
+<!-- Player 1 Slection Modal -->
+<div class="modal fade text-center" id="modal_player1" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" >{% trans "Jugador 1 - McLaren" %}</h4>
+                <button type="button"  onclick="$('#modal_player1').modal('hide');" style="margin-top:-40px;border:none;background:none;font-size:40px;float:right;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row" style="padding: 10px 0px 10px 0px" style="display: flex; justify-content: center;">
+                    <h5 class="text-center">{% trans "Introduce tu nombre de usuario de Unibotics" %}</h5>
+                    <textarea id="player1_username" name="username1" cols="20" rows="1" placeholder="Your username" style="resize:none;box-sizing: border-box;border: 2px solid #ccc; border-radius: 4px;" required></textarea>
+                </div>
+            </div>
+            <div class="modal-footer" style="display: flex; justify-content: center;">
+                <button type="button" onclick="player1Selected(document.getElementById('player1_username').value)" class="btn btn-success" >{% trans "Seleccionar" %}</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Player 2 Slection Modal -->
+<div class="modal fade text-center" id="modal_player2" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">{% trans "Jugador 2 - Tororosso" %}</h4>
+                <button type="button"  onclick="$('#modal_player2').modal('hide');" style="margin-top:-40px;border:none;background:none;font-size:40px;float:right;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row" style="padding: 10px 0px 10px 0px" style="display: flex; justify-content: center;">
+                    <h5 class="text-center">{% trans "Introduce tu nombre de usuario de Unibotics" %}</h5>
+                    <textarea id="player2_username" name="username2" cols="20" rows="1" placeholder="Your username" style="resize:none;box-sizing: border-box;border: 2px solid #ccc; border-radius: 4px;" required></textarea>
+                </div>
+            </div>
+            <div class="modal-footer" style="display: flex; justify-content: center;">
+                <button type="button" onclick="player2Selected(document.getElementById('player2_username').value)" class="btn btn-success" >{% trans "Seleccionar" %}</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script id='switch' type="text/javascript" lang='{{language}}'>
+
+    function switchVisible() {
+        var lang = document.getElementById("switch").getAttribute("lang");
+        console.log(lang);
+        if (document.getElementById('jupyter_column').style.display == 'none') {
+            document.getElementById('jupyter_column').style.display = 'block';
+            document.getElementById('theory_column').style.display = 'none';
+            if (lang == 'es') {
+                document.getElementById('ButtonSwitch').innerHTML = '<span class="glyphicon glyphicon-pencil"></span> Ver Teoría'
+            } else {
+                document.getElementById('ButtonSwitch').innerHTML = '<span class="glyphicon glyphicon-pencil"></span> View Theory'
+            }
+        }
+        else {
+            document.getElementById('jupyter_column').style.display = 'none';
+            document.getElementById('theory_column').style.display = 'block';
+            if (lang == 'es') {
+                document.getElementById('ButtonSwitch').innerHTML = '<span class="glyphicon glyphicon-console"></span> Ver Código'
+            } else {
+                document.getElementById('ButtonSwitch').innerHTML = '<span class="glyphicon glyphicon-console"></span> View Code'
+            }
+        }
+    }
+
+</script>
+
+{% endblock %}

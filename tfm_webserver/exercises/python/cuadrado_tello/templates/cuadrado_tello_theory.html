@@ -1,0 +1,44 @@
+<!doctype html>
+{% load static %}
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>cuadrado_tello_teoria</title></head>
+<body><center><h1>Cuadrado con Tello</h1></center>
+<center><p>El objetivo de esta práctica es realizar un cuadrado con el drone Tello.</p></center>
+<center><p><img src="{% static 'python/cuadrado_tello/img/tello_guard.jpg' %}" width=350px></p></center>
+<center><p>Para ello se usaran los comandos  <strong>despegar, girar_derecha_hasta/girar_izquierda_hasta, avanzar_hasta y aterrizar</strong>. El cuadrado pueder ser del lado que se desee. 
+recuerda que, debido al buffer de recepción demensajes del drone Tello, este descartará los mensajes anteriores no ejecutados cada vez que reciba un nuevo comando. Por tanto, con cada nueva orden el drone esperará 4 segundos antes de escuchar nuevas órdenes, para así tener tiempo suficiente para completar la maniobra solicitada.</p></center>
+<!--<h2>1 - Instalación</h2>
+<p>Este apartado se ejecuta una vez solamente la primera vez que quieres hacer la práctica:</p>
+<ol start='' >
+<li>Descarga python 3 en tu ordenador</li>
+<li>Si aún no lo tienes, descarga el <a href="{% static 'tello_proxy.py' %}">tello_proxy</a></li>
+<li>Descarga los  <a href="{% static 'tello_requirements.txt' %}">requisitos del proxy</a></li>
+<li>Instala los requisitos: <code>pip3 install  -r tello_requirements.txt</code></li>
+</ol>-->
+<h2>1 - Funcionamiento</h2>
+<ol start='' >
+<li>Edita el código y, cuando creas que está listo para ejecutarse en el drone, pulsa en guardar.</li>
+<li>Enciende el Tello.</li>
+<li>Pincha la antena wifi (dispositivo USB) en el PC.</li>
+<li>Conectate con esta antena auxiliar a la red del tello (con nombre TELLOXXXXXX).</li>
+<li>Una vez hayas guardado, presiona sobre el botón<span style="background-color:#8de7f0;color:white;padding:2px;margin-left:3px;">Ejecutar</span>. Espera unos segundos a que la aplicación conecte con la red del drone y verás tu código en acción.</li>
+</ol>
+
+<h2>3 - API</h2>
+<ul>
+<li><code>girar_izquierda_hasta(grados)</code>: Esta función hará que el drone gire sobre sí mismo hacia la izquierda los grados que le indiques</li>
+<li><code>girar_derecha_hasta(grados)</code>: Esta función hará que el drone gire sobre sí mismo hacia la derechalos grados que le indiques</li>
+<li><code>avanzar_hasta(distancia)</code>: Esta función hará avanzar al drone la distancia que le indiques en metros (0.02 a 5 metros)</li>
+<li><code>retroceder_hasta(distancia)</code>: Esta función hará retroceder al drone la distancia que le indiques en metros (0.02 a 5 metros)</li>
+<li><code>subir_hasta(distancia)</code>: Esta función hará subir al drone la distancia que le indiques en metros (0.02 a 5 metros)</li>
+<li><code>bajar_hasta(distancia)</code>: Esta función hará bajar al la distancia que le indiques en metros (0.02 a 5 metros)</li>
+<li><code>izquierda_hasta(distancia)</code>: Esta función hará que el drone se mueva lateralmente a la izquierda la distancia que le indiques en metros (0.02 a 5 metros)</li>
+<li><code>derecha_hasta(distancia)</code>: Esta función hará que el drone se mueva lateralmente a la derecha la distancia que le indiques en metros (0.02 a 5 metros)</li>
+<li><code>despegar()</code>: Despega el Drone</li>
+<li><code>aterrizar()</code>: Aterriza el Drone</li>
+
+</ul>
+</body>
+</html>

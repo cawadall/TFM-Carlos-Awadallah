@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% block body %}
+
+
+
+{% if success %}
+<div class="block1">
+	<h1>Hola {{ name }}!</h1>
+	<h2>Descarga <strong>exisotsa.</strong></h2>
+
+<!-- 	<h3>Arrastra la imagen a la rectángulo :-)</h3>
+	<div id="drop" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+	<img id="drag" src="http://www.naturalprogramming.com/images/smilingpython.gif" draggable="true" ondragstart="drag(event)" width="280" height="280"> -->
+</div>
+
+{% else %}
+
+<div class="block1">
+	<h1>Hola {{ name }}!</h1>
+	<h2>Descarga <strong>fallida.</strong></h2>
+</div>
+
+{% endif %}
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends "base.html" %} {% block body %}
+
+<style>
+#drop {
+	text-align: center;
+    width: 280px;
+    height: 280px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+    
+}
+#drag {
+	text-align: center;
+}
+
+
+.box__dragndrop,
+.box__uploading,
+.box__success,
+.box__error {
+  display: none;
+}
+
+.subir{
+    padding: 5px 10px;
+    background: blue;
+    color: #fff;
+    border: 0px solid #fff;
+}
+
+.subir:hover{
+    color: #fff;
+    background: #f7cb15;
+}
+
+</style>
+
+
+<script>
+    function allowDrop(ev) {
+	ev.preventDefault();
+    }
+
+    function drag(ev) {
+	ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+	ev.preventDefault();
+	var data = ev.dataTransfer.getData("text");
+	ev.target.appendChild(document.getElementById(data));
+    }
+    
+    
+    
+    function cambiarNombreInput(){
+	    var boton = document.getElementById("file-upload").files[0].name;
+	    document.getElementById("info").innerHTML = boton;
+    }
+</script>
+
+ 
+<div class="seccion_enviar_pibot">
+    {% if running==True %}
+	<img src="/static/img/dual-gear-loading-icon.gif" width="200px" height="200px"><p><h3><b>Ejecutando</b> el programa enviado</h3>
+	<div class=col-md-12>
+	    <a class="btn btn-danger col-md-6" href="/stop" value="stop"><span class="glyphicon glyphicon-play"></span>Parar</a>
+	</div>
+    {% else %}
+	<h1>Envía tu programa al PiBot</h1>
+	<!-- <div class="block1">
+	    <img src="http://www.naturalprogramming.com/images/smilingpython.gif" width="280" height="280">
+	</div> -->
+	<div class=col-md-12>
+	    <form action="/upload_program" method="POST" enctype="multipart/form-data">
+		<label for="file-upload" class="col-md-3 btn btn-success subir"><i class="glyphicon glyphicon-upload"></i>Enviar al PiBot</label>
+		<input id="file-upload" onchange="cambiarNombreInput()" type="file" name="file" style="display: none;">
+		<div id="info"></div>
+		<i class="glyphicon glyphicon-play"></i><input class="btn btn-success col-md-3" type=submit value=Empezar>
+	    </form>
+	</div>
+    {% endif %}	
+
+</div>
+
+
+
+
+{% endblock %}

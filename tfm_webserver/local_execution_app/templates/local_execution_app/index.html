@@ -1,0 +1,103 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Trabajo Fin de Máster - Carlos Awadallah</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- JQuery & Bootstrap -->
+    <link href='{% static "css/bootstrap/bootstrap.min.css" %}' rel="stylesheet" type="text/css">
+    <script src='{% static "js/style/jquery-1.10.2.js" %}'></script>
+    <script src='{% static "js/style/bootstrap/bootstrap.min.js" %}'></script>
+    <script src='{% static "js/style/plugins/jquery.tubular/jquery.tubular.1.0.js" %}'></script> 
+    <!-- Text Fonts -->
+    <link href='{% static "css/plugins/font-awesome/css/font-awesome.min.css" %}' rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <!-- Main Style Sheet -->
+    <link href='{% static "css/main.css" %}' rel="stylesheet">
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <div id="wrapper">
+
+        <nav class="navbar navbar-dark navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="#page-top">
+                        <span class="logo">
+                            <img src='{% static "img/uc3m_min_sinfondo.png" %}' alt="">
+                        </span>
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a id="github" href="https://github.com/cawadall/TFM-Carlos-Awadallah" target="_blank"><i class="fa fa-github" style="font-size: 30px;"></i></a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="/main_page">Entrar</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="/admin/">Registrarse</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <header class="ytvd">
+            <div class="intro-video intro-dark-bg container">
+                <div class="overlay"></div>
+                <div class="intro-body" data-scrollreveal="move 0 over 1.5s">
+                    <div class="container">
+                        <br>
+                        <br>
+                        <h1 class="brand-heading">
+                            <span class="text-primary">Trabajo Fin </span>De Máster<span class="text-primary"></span>
+                            <div class="item active">
+                                <h4>Ejecución Local de tareas de Visión Artificial y Robótica</h4>
+                            </div>
+                        </h1>
+                        <hr class="light">
+                        <div class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <h4>Máster de Robótica y Automatización</h4>
+                                </div>
+                                <div class="item">
+                                    <h4>Campus de Leganés</h4>
+                                </div>
+                                <div class="item">
+                                    <h4>Curso 2019-2020</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+    
+    <script>
+    $('.ytvd').tubular({
+        videoId: '2BqTAunmx30',
+        mute: true
+    });
+    </script>
+
+</body>
+
+</html>

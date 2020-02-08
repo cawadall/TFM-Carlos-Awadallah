@@ -1,0 +1,146 @@
+{% extends "local_execution_app/base.html" %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+
+<link rel="stylesheet" href='{% static "css/theory.css" %}'>
+
+<script id="jupyter" src="{% static 'js/mixed_execution/local.js' %}" _ip={{ip_address}} _port={{port}} nbcontent='{{notebook}}' nbname='{{nbname}}' codefile='{{codefile}}' configfile='{{configfile}}' assets='{{assets}}'></script>
+
+<div id="save_modal" class="col-xs-6 col-xs-offset-3 modal text-center" style="display:none">
+     <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2 id="help" align="center">{% trans "¿Has guardado los cambios?" %}</h2>
+      </div>
+      <div class="modal-body">
+        <p> {% trans "Asegúrate de haber guardado todos los cambios en tu cuadernillo pulsando" %} <span id="save">Ctrl + S</span> {% trans "sobre él" %} </p>
+        <form action="{% url 'exit_local' %}" method="post" accept-charset="utf-8">{% csrf_token %}
+          <textarea id="exercise_id" name="exercise_id" cols="2000" rows="2000" style='display:none'>{{exercise.exercise_id}}</textarea>
+          <textarea id="fillednb" name="filledNotebook" cols="2000" rows="2000" style='display:none'></textarea>
+          <textarea id="session" name="kernelSession" cols="100" rows="1" style='display:none'></textarea>
+          <textarea id="files2delete" name="files2delete" cols="200" rows="1" style='display:none'></textarea>
+      </div>
+      <div class="modal-footer">
+            <input id="connect" class="btn btn-default" type="submit" value="{% trans 'Sí, continuar' %}"></input>
+        </form>
+        <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "No, volver atrás" %}</button>
+      </div>
+    </div>
+</div>
+
+{% if simulation_type == "local" and exercise.platform == "vision" or exercise.platform == "real" %}
+    {% if gui_url %}
+        <!-- Description -->
+        <div id="theory_column" class="col-md-8" style="padding:0px 0px 0px 0px; height: calc(100vh - 72px); display:block;">
+            <div class="col-md-12" width="100%" height="100%" frameBorder="0" style="max-height: 100%; overflow-y: scroll;">
+                {% include exercise.language|add:"/"|add:exercise.exercise_id|add:"/templates/"|add:exercise.exercise_id|add:"_theory.html" %} 
+            </div>
+        </div>
+        <div id="jupyter_column" class="col-md-8" style="padding:0px 0px 0px 0px; height: calc(100vh - 72px); display:none;">
+            <div id="nb">
+                <!-- Jupyter -->
+                <iframe id="ifr" class="col-lg-12" height="1500px" frameBorder="0" src='http://{{ip_address}}:{{port}}/notebooks/{{nbname}}'></iframe><!--http://{{ip_address}}:{{port}}/notebooks/{{nbname}}-->
+            </div>
+        </div>
+
+        <div id="gui_column" class="col-md-4" style="padding:0px 0px 0px 0px; height: calc(100vh - 72px)">
+            {% include exercise.language|add:"/"|add:exercise.exercise_id|add:"/templates/"|add:exercise.exercise_id|add:".html" %} 
+        </div>
+    {% elif exercise.real %}
+        <!-- Description -->
+        <div id="theory_column" class="col-md-8" style="padding:0px 0px 0px 0px; height: calc(100vh - 72px); display:block;">
+            <div class="col-md-12" width="100%" height="100%" frameBorder="0" style="max-height: 100%; overflow-y: scroll;">
+                {% include exercise.language|add:"/"|add:exercise.exercise_id|add:"/templates/"|add:exercise.exercise_id|add:"_theory.html" %} 
+            </div>
+        </div>
+        <div id="jupyter_column" class="col-md-8" style="padding:0px 0px 0px 0px; height: calc(100vh - 72px); display:none;">
+            <div id="nb">
+                <!-- Jupyter -->
+                <iframe id="ifr" class="col-lg-12" height="1500px" frameBorder="0" src='http://{{ip_address}}:{{port}}/notebooks/{{nbname}}'></iframe><!--http://{{ip_address}}:{{port}}/notebooks/{{nbname}}-->
+            </div>
+        </div>
+        <!-- Use Guide -->
+        <div id="download_guide_column" class="col-md-4" style="padding:0px 0px 0px 0px; height: calc(100vh - 72px)">
+            {% include "local_execution_app/"|add:exercise.real %}
+        </div>
+    {% else %}
+        <div id="theory_column" class="row col-md-12" style="padding:0px 0px 0px 0px; height: calc(100vh - 72px); display:block;">
+            <div class="col-md-12" width="100%" height="100%" frameBorder="0" style="max-height: 100%; overflow-y: scroll;">
+                {% include exercise.language|add:"/"|add:exercise.exercise_id|add:"/templates/"|add:exercise.exercise_id|add:"_theory.html" %} 
+            </div>
+        </div>
+        <div id="jupyter_column" class="row col-md-12" style="padding:0px 0px 0px 0px; height: calc(100vh - 72px); display:none;">
+            <div id="nb">
+                <!-- Jupyter -->
+                <iframe id="ifr" class="col-lg-12" height="1500px" frameBorder="0" src='http://{{ip_address}}:{{port}}/notebooks/{{nbname}}'></iframe><!--http://{{ip_address}}:{{port}}/notebooks/{{nbname}}-->
+            </div>
+        </div>
+    {% endif %}
+
+{% elif simulation_type == "local" and exercise.platform == "gazebo" %}
+    <!-- Description -->
+    <div id="theory_column" class="col-md-6" style="padding:0px 0px 0px 0px; height: calc(100vh - 72px); display:block;">
+        <div class="col-md-12" width="100%" height="100%" frameBorder="0" style="max-height: 100%; overflow-y: scroll;">
+            {% include exercise.language|add:"/"|add:exercise.exercise_id|add:"/templates/"|add:exercise.exercise_id|add:"_theory.html" %} 
+        </div>
+    </div>
+    <!-- Jupyter -->
+    <div id="jupyter_column" class="col-md-6 col" style="padding:0px 0px 0px 0px; height: calc(100vh - 72px); display:none;">
+        <iframe id="ifr" class="col-md-12" width="100%" height="100%" frameBorder="0" src='http://{{ip_address}}:{{port}}/notebooks/{{nbname}}'></iframe>
+    </div>
+    <!-- GzWeb -->
+    <div id="gazebo_column" class="col-md-6" style="padding:0px 0px 0px 0px; height: calc(100vh - 72px)">
+        {% if gui %}
+            {% include exercise.language|add:"/"|add:exercise.exercise_id|add:"/templates/"|add:exercise.exercise_id|add:".html" %} 
+        {% else %}
+            <iframe class="col-md-12" width="100%" height="100%" frameBorder="0" src='{{gzweb_url}}'></iframe>
+        {% endif %}
+    </div>
+{% endif %}
+
+{% if driver %}
+    <div class="row col-md-12">
+            <div id="videodiv" >
+                <p id="error" style="display:none">Access to the webcam Rejected!</p>
+            </div>
+        </div>
+    <script type="application/javascript" src="{% get_static_prefix %}js/mixed_execution/drivers/{{driver}}"+ onload="init();"></script>
+{% endif %}
+
+<script id="switch" type="text/javascript" lang='{{language}}'>
+
+    function connect2Jupyter() {
+        document.getElementById('ifr').src = 'http://'+document.getElementById("jupyter").getAttribute("_ip")+':'+document.getElementById("jupyter").getAttribute("_port")+'/notebooks/'+document.getElementById("jupyter").getAttribute("nbname")
+    }
+
+    setTimeout(connect2Jupyter, 2000);
+
+    function switchVisible() {
+        var lang = document.getElementById("switch").getAttribute("lang");
+        console.log(lang);
+        if (document.getElementById('jupyter_column').style.display == 'none') {
+            document.getElementById('jupyter_column').style.display = 'block';
+            document.getElementById('theory_column').style.display = 'none';
+            if (lang == 'es') {
+                document.getElementById('ButtonSwitch').innerHTML = '<span class="glyphicon glyphicon-pencil"></span> Ver Teoría'
+            } else {
+                document.getElementById('ButtonSwitch').innerHTML = '<span class="glyphicon glyphicon-pencil"></span> View Theory'
+            }
+        }
+        else {
+            document.getElementById('jupyter_column').style.display = 'none';
+            document.getElementById('theory_column').style.display = 'block';
+            if (lang == 'es') {
+                document.getElementById('ButtonSwitch').innerHTML = '<span class="glyphicon glyphicon-console"></span> Ver Código'
+            } else {
+                document.getElementById('ButtonSwitch').innerHTML = '<span class="glyphicon glyphicon-console"></span> View Code'
+            }
+        }
+    }
+
+</script>
+
+{% endblock %}
+

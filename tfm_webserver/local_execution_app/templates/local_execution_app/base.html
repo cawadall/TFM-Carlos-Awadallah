@@ -1,0 +1,147 @@
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE HTML>
+<html lang="es-ES">
+    <head>
+        <title>Local Execution Server</title>
+        <meta http-equiv="Content-type" content="text/html" charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        <!-- Bootstrap & JQuery -->
+        <script src='{% static "js/jquery-3.2.1.min.js"%}'></script>
+        <script src='{% static "js/bootstrap.min.js"%}'></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+       
+        <link rel="stylesheet" type="text/css" href='{% static "css/style.css" %}'>
+        <link rel="stylesheet" type="text/css" href='{% static "css/animate.css" %}'>
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/> 
+    </head>
+
+
+    <body id="navbar" class="background">
+        <!-- NAVBAR -->
+        <nav class="navbar" role="navigation">
+            
+            <div class="navbar-collapse collapse">
+                <ul id="logo" class="nav navbar-nav">
+                    <a href="/main_page"><img src='{% static "img/uc3m_min_sinfondo.png"%}' width="160" height="50" class="d-inline-block align-top" alt=""></a>
+                </ul>
+
+                <!-- Barra Central del Navbar -->
+                <ul class="nav navbar-nav navbar-center">
+                    {% if simulation_site and authenticate %}
+                        <li><a id="ButtonSwitch" type="button" value="Ver Teoría" onclick="switchVisible();"><span class="glyphicon glyphicon-console"></span>  {% trans "Ver Código" %}</a></li>
+                        {% if simulation_type == 'local' %}
+                            <li><a id="goToMainPage"  data-toggle="modal" data-target="#save_modal" onclick="logout()"><span class="glyphicon glyphicon-off"></span> {% trans "Salir del Ejercicio" %}</a></li>
+                        {% endif %}
+                        {% if gui and referee %}
+                            <li><a id="ButtonGuiReferee" type="button" value=" Ver Teoría" onclick="switchGuiReferee();"><span id="GuiRefereeIcon" class="glyphicon glyphicon-check"></span>{% trans "Ver Árbitro" %}</a></li>
+                        {% endif %}
+                        
+                    {% else %}
+                        <li><a href="/admin/"> {% trans "Registrate" %}</a></li>
+                    {% endif %}
+                </ul>
+
+                {% if authenticate %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a id="version"> {% trans "Versión Test" %}</a></li>
+                        <li><a id="github" href="https://github.com/cawadall/TFM-Carlos-Awadallah" target="_blank"><i class="fa fa-github" style="font-size:28px"></i></a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user }} <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div class="summary navbar-content">
+                                        <div>
+                                            <div class="col-md-12 text-center" style="margin-top:5px">
+                                                <p data-letters="{{ user|make_list|first|title }}{{ user.last_name|make_list|first|title }}">{{ user }}</p>
+                                                <div class="divider"></div>
+                                            </div>
+                                            <div class="col-md-12 text-center">
+                                                <span>{{ user.get_full_name }}</span></br>
+                                                <span id="mail" class="text-center small">{{ user.email }}</span>
+                                                <div class="divider"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="divider"></div>
+                                    <li><a id="exit" href="/">{% trans "Salir" %}</a></li>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                {% endif %}
+            </div>
+        </nav>
+
+        <div class="modal fade text-center" id="modal_exit_simulation" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 class="modal-title">{% trans "¿Has guardado los cambios?" %}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row" style="padding-top: 10px">
+                            <ul>
+                                <h5 class="text-center">{% trans "¿Estás seguro de que quieres salir de la simulación? Se perderán los cambios que no hayan sido guardados" %}</h5>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a id="btn-exit_simulation" type="button" href="/exit_simulation" class="btn btn-raised btn-success">{% trans "Sí, he guardado. Salir." %}</a>
+                        <a type="button" class="btn btn-danger" data-dismiss="modal">{% trans "No, aún no he guardado, volver." %}</a>
+                    </div>
+                    <script>
+                        $(document).ready(function() {
+                            $('#btn-exit_simulation').click(function() {
+                                socket.close()
+                                $('#modal_exit_simulation').modal('toggle');
+                                $('#loader').removeClass('loaded')
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        {% if error %}
+            <div class="alert alert-danger col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2" role="alert">{{ message | safe }} </div>
+        {% elif success %}
+            <div class="alert alert-success col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2" role="alert"> {{ message | safe}}</div>
+        {% endif %}
+
+        <div id="loader"> 
+            <div id="icon_loader" class="col-xs-offset-4 col-xs-4 col-sm-offset-5 col-sm-2">
+                <img id="logo" class="img-responsive animated flipOutY" src="{% static 'img/uc3m_sinfondo.png' %}" alt="" width="100%">
+            </div>
+            <script>
+                function LoadingAnimation(){
+                    $('#logo').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                        logo = document.getElementById("logo")
+                        if (logo.className =="img-responsive animated flipOutY") {
+                            logo.className ="img-responsive animated flipInY"
+                        } else {
+                            logo.className ="img-responsive animated flipOutY"
+                            LoadingAnimation()
+                        }
+                    });
+                }
+                LoadingAnimation()
+                $(document).ready(function(){
+                    document.getElementById("loader").className = "loaded"
+                });
+            </script>
+        </div>
+
+        {% block content %}
+            <!-- MORE CONTENT -->
+        {% endblock %}
+
+    </body>  
+</html>

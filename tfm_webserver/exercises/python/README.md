@@ -1,0 +1,3 @@
+# Exercises
+
+Local Execution exercises.

@@ -1,0 +1,7 @@
+/home/cawadall/Downloads/tello/h264decoder/build/CMakeFiles/install/strip.dir
+/home/cawadall/Downloads/tello/h264decoder/build/CMakeFiles/edit_cache.dir
+/home/cawadall/Downloads/tello/h264decoder/build/CMakeFiles/h264decoder.dir
+/home/cawadall/Downloads/tello/h264decoder/build/CMakeFiles/rebuild_cache.dir
+/home/cawadall/Downloads/tello/h264decoder/build/CMakeFiles/list_install_components.dir
+/home/cawadall/Downloads/tello/h264decoder/build/CMakeFiles/install/local.dir
+/home/cawadall/Downloads/tello/h264decoder/build/CMakeFiles/install.dir

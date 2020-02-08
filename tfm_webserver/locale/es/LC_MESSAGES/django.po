@@ -1,0 +1,249 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-13 03:05-0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: jderobot_kids/templates/jderobot_kids/base.html:38
+msgid "Ver Código"
+msgstr "Ver Código"
+
+#: jderobot_kids/templates/jderobot_kids/base.html:40
+#: jderobot_kids/templates/jderobot_kids/base.html:42
+#: jderobot_kids/templates/jderobot_kids/base.html:52
+msgid "Salir del Ejercicio"
+msgstr "Salir del Ejercicio"
+
+#: jderobot_kids/templates/jderobot_kids/base.html:45
+msgid "Ver Árbitro"
+msgstr "Ver Árbitro"
+
+#: jderobot_kids/templates/jderobot_kids/base.html:55
+msgid "Registrate"
+msgstr "Registrate"
+
+#: jderobot_kids/templates/jderobot_kids/base.html:61
+#, fuzzy
+#| msgid "Versión 1.4.0"
+msgid "Versión Test"
+msgstr "Versión 1.4.0"
+
+#: jderobot_kids/templates/jderobot_kids/base.html:81
+msgid "Cerrar Sesión"
+msgstr "Cerrar Sesión"
+
+#: jderobot_kids/templates/jderobot_kids/base.html:98
+#: jderobot_kids/templates/jderobot_kids/local.html:15
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:17
+msgid "¿Has guardado los cambios?"
+msgstr "¿Has guardado los cambios?"
+
+#: jderobot_kids/templates/jderobot_kids/base.html:103
+msgid ""
+"¿Estás seguro de que quieres salir de la simulación? Se perderán los cambios "
+"que no hayan sido guardados"
+msgstr ""
+"¿Estás seguro de que quieres salir de la simulación? Se perderán los cambios "
+"que no hayan sido guardados"
+
+#: jderobot_kids/templates/jderobot_kids/base.html:109
+msgid "Sí, he guardado. Salir."
+msgstr "Sí, he guardado. Salir."
+
+#: jderobot_kids/templates/jderobot_kids/base.html:110
+msgid "No, aún no he guardado, volver."
+msgstr "No, aún no he guardado, volver."
+
+#: jderobot_kids/templates/jderobot_kids/base.html:132
+msgid "Terminar todas las simulaciones"
+msgstr "Terminar todas las simulaciones"
+
+#: jderobot_kids/templates/jderobot_kids/base.html:137
+msgid "Todas las simulaciones activas terminarán. ¿Estás seguro?"
+msgstr "Todas las simulaciones activas terminarán. ¿Estás seguro?"
+
+#: jderobot_kids/templates/jderobot_kids/base.html:142
+msgid "Sí, terminar todas las simulaciones"
+msgstr "Sí, terminar todas las simulaciones"
+
+#: jderobot_kids/templates/jderobot_kids/base.html:143
+#: jderobot_kids/templates/jderobot_kids/local.html:28
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:30
+msgid "No, volver atrás"
+msgstr "No, volver atrás"
+
+#: jderobot_kids/templates/jderobot_kids/base.html:155
+msgid "Terminar Simulaciones"
+msgstr "Terminar Simulaciones"
+
+#: jderobot_kids/templates/jderobot_kids/local.html:18
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:20
+msgid ""
+"Asegúrate de haber guardado todos los cambios en tu cuadernillo pulsando"
+msgstr ""
+"Asegúrate de haber guardado todos los cambios en tu cuadernillo pulsando"
+
+#: jderobot_kids/templates/jderobot_kids/local.html:18
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:20
+msgid "sobre él"
+msgstr "sobre él"
+
+#: jderobot_kids/templates/jderobot_kids/local.html:26
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:28
+msgid "Sí, continuar"
+msgstr "Sí, continuar"
+
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:45
+msgid "Jugador 1"
+msgstr "Jugador 1"
+
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:49
+msgid "Jugador 2"
+msgstr "Jugador 2"
+
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:61
+msgid "<strong>Jugador 1</strong> <br>McLaren"
+msgstr "<strong>Jugador 1</strong> <br>McLaren"
+
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:62
+msgid "<strong>Jugador 2</strong> <br>Tororosso"
+msgstr "<strong>Jugador 2</strong> <br>Tororosso"
+
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:63
+msgid "<strong>¡EMPEZAR!</strong>"
+msgstr "<strong>¡EMPEZAR!</strong>"
+
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:74
+msgid "Jugador 1 - McLaren"
+msgstr "Jugador 1 - McLaren"
+
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:79
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:101
+msgid "Introduce tu nombre de usuario de Unibotics"
+msgstr "Introduce tu nombre de usuario de Unibotics"
+
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:84
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:106
+msgid "Seleccionar"
+msgstr "Seleccionar"
+
+#: jderobot_kids/templates/jderobot_kids/local_competitive_exercise.html:96
+msgid "Jugador 2 - Tororosso"
+msgstr "Jugador 2 - Tororosso"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:12
+#, fuzzy
+#| msgid "Ejercicios en Ejecución Mixta"
+msgid "Set de Ejercicios en Ejecución Mixta"
+msgstr "Set de Ejercicios en Ejecución Mixta"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:27
+msgid "Simulación Local"
+msgstr "Simulación Local"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:35
+msgid "Ejercicios en Ejecución Mixta"
+msgstr "Ejercicios en Ejecución Mixta"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:38
+msgid ""
+"Esta plataforma ofrece a sus usuarios la posibilidad de usar la 'Ejecución "
+"Mixta' para ejecutar cualquier ejercicio de ingeniería robótica y visión "
+"haciendo uso de su propio hardware a través de la aplicación web. ¡Con ello "
+"podrás hacer que el código funcione en tu propio robot/sensor conectado a "
+"través de un puerto USB a tu equipo!"
+msgstr ""
+"Esta plataforma ofrece a sus usuarios la posibilidad de usar la 'Ejecución Mixta' "
+"para ejecutar cualquier ejercicio de ingeniería robótica y visión haciendo "
+"uso de su propio hardware a través de la aplicación web. ¡Con ello podrás "
+"hacer que el código funcione en tu propio robot/sensor conectado a través de "
+"un puerto USB a tu equipo!"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:40
+msgid "Instalación"
+msgstr "Instalación"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:41
+msgid ""
+"Descarga la Imagen Docker para Ejecución Mixta que cofigurará todo lo "
+"necesario en tu sistema"
+msgstr ""
+"Descarga la Imagen Docker para Ejecución Mixta que cofigurará todo lo "
+"necesario en tu sistema"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:43
+msgid "Esto puede tardar. Sólo es necesario seguir este paso la primera vez."
+msgstr "Esto puede tardar. Sólo es necesario seguir este paso la primera vez."
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:46
+msgid "Uso"
+msgstr "Uso"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:48
+msgid "Ejecuta un contenedor Docker con la siguiente instrucción"
+msgstr "Ejecuta un contenedor Docker con la siguiente instrucción"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:71
+msgid "Conectar"
+msgstr "Conectar"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:72
+msgid "Opciones"
+msgstr "Opciones"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:76
+msgid "Cerrar"
+msgstr "Cerrar"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:87
+msgid "PREFERENCIAS"
+msgstr "PREFERENCIAS"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:90
+msgid "Selecciona el puerto en el que se ejecutará el Servidor de Jupyter"
+msgstr "Selecciona el puerto en el que se ejecutará el Servidor de Jupyter"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:93
+msgid "Introduce el puerto"
+msgstr "Introduce el puerto"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:99
+msgid "OK"
+msgstr "OK"
+
+#: jderobot_kids/templates/jderobot_kids/main_page.html:108
+#, fuzzy
+#| msgid "Foro del ejercicio"
+msgid "Descripción del ejercicio"
+msgstr "Foro del ejercicio"
+
+#: jderobot_server/settings.py:161
+msgid "Spanish"
+msgstr "Spanish"
+
+#: jderobot_server/settings.py:162
+msgid "English"
+msgstr "English"
+
+#~ msgid "Ir a Cuadernillo"
+#~ msgstr "Ir a Cuadernillo"
+
+#~ msgid "Robot Real"
+#~ msgstr "Robot Real"
+
+#~ msgid "Robot Simulado"
+#~ msgstr "Robot Simulado"

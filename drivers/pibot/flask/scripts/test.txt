@@ -1,0 +1,5 @@
+interface wlan1
+static ip_addesss=
+static routers=192.168.0.37
+static domain_name_servers=1.1.1.1 8.8.8.8
+static domain_search=1.1.1.1 8.8.8.8

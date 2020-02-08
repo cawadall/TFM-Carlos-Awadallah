@@ -1,0 +1,68 @@
+{% extends "base.html" %} {% block body %}
+
+<style>
+#drop {
+	text-align: center;
+    width: 280px;
+    height: 280px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+    
+}
+#drag {
+	text-align: center;
+}
+
+
+.box__dragndrop,
+.box__uploading,
+.box__success,
+.box__error {
+  display: none;
+}
+
+
+</style>
+<script>
+	function allowDrop(ev) {
+	    ev.preventDefault();
+	}
+
+	function drag(ev) {
+	    ev.dataTransfer.setData("text", ev.target.id);
+	}
+
+	function drop(ev) {
+	    ev.preventDefault();
+	    var data = ev.dataTransfer.getData("text");
+	    ev.target.appendChild(document.getElementById(data));
+	}
+
+</script>
+
+ 
+<div class="block1">
+
+	<h1>Hola {{ name }}!</h1>
+
+	<h2>Descarga Local Kibotics</h2>
+
+	<h3>Arrastra la imagen a la rectángulo :-)</h3>
+	<div id="drop" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+	<img id="drag" src="http://www.naturalprogramming.com/images/smilingpython.gif" draggable="true" ondragstart="drag(event)" width="280" height="280">
+
+	
+	    <form id="target" action="upload" class="form-horizontal">
+	      <fieldset ></fieldset>
+	    </form>
+
+
+
+
+</div>
+
+
+
+
+{% endblock %}
