@@ -317,7 +317,7 @@ En este punto, todos los agente involucrados se inicial crrectamente y el _kerne
 
 Se ha construido la primera versión del servidor de pruebas en Django. Este servidor simplemente espera a recibir solicitudes, y cuando recibe una de tipo "empezar ejercicio" simplemente sirve el cuadernillo apropiado (aunque en este punto sólo existe uno) a través del REST API de Jupyter a un _kernel_ que el suaurio debe lanzar (en este caso, en un puerto distinto al del servidor).
 
-![TEST SERVER](https://github.com/cawadall/TFM-Carlos-Awadallah/docs/img/TEST_SERVER.png)
+![TEST SERVER](https://github.com/cawadall/TFM-Carlos-Awadallah/blob/master/docs/img/TEST_SERVER.png)
 
 A través de la operación POST y colocando la ruta adecuada, el cuerpo del mensaje HTTP debidamente rellenado y con las opciones correctas de seguridad en las cabeceras (principalmente el token que el Servidor de Cuadernillos de Jupyter establece para la autenticación y creación de sesiones de usuario), conseguimos que el _kernel_ reciba el cuadernillo:
 
