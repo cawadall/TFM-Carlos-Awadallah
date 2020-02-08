@@ -14,34 +14,34 @@ Este documento pretende ser una bitácora semanal de trabajo que recogerá los b
 
 ## Semanas 45 a 47
 
-Estas últimas semanas del proyecto completaremos la spruebas con grupos de voluntarios y sistemas diferentes. Probarmeos todos los supuestos de las tres vertientes de ejercicios: acceso a _hardware_ integrado, simulación y acceso a _hardware_ externo. Extraeremos parámetros de rendimiento y funcionamiento para validar la herramienta construida.
+Estas últimas semanas del proyecto completaremos las pruebas con grupos de voluntarios y sistemas diferentes. Probarmeos todos los supuestos de las tres vertientes de ejercicios: acceso a _hardware_ integrado, simulación y acceso a _hardware_ externo. Extraeremos parámetros de rendimiento y funcionamiento para validar la herramienta construida.
 
 Por otro lado, dedicaremos gran parte del tiempo a la redacción de la memoria de la tesis, la cual iremos puliendo y mejorando hasta la fecha de defensa del proyecto. En este punto damos por finalizada la primera versión completa y funcional de la Ejecución Mixta.
 
 ## Semana 44
 
-Con el _driver_ de Tello ya debidamente probado y arreglado, hemos implementado también el _back-end_ prototípico de un ejercicio destinado a al eejecución sobre el robot real del cliente. Esta infraestructura ha sido preparada de nuevo en forma de bucle de iteraciones que instancia una clase que contiene los métodos de envío de comandos a los actuadores y acceso a la informacón de los sesnores. La conexión con el dron se realizará a través de la red interna del cliente, por medio de un servidor de envío y recepción basado en UDP bajo una subred que levanta el propio robot.
+Con el _driver_ de Tello ya debidamente probado y arreglado, hemos implementado también el _back-end_ prototípico de un ejercicio destinado a la ejecución sobre el robot real del cliente. Esta infraestructura ha sido preparada de nuevo en forma de bucle de iteraciones que instancia una clase que contiene los métodos de envío de comandos a los actuadores y acceso a la informacón de los sesnores. La conexión con el dron se realizará a través de la red interna del cliente, por medio de un servidor de envío y recepción basado en UDP bajo una subred que levanta el propio robot.
 
 Así, instanciamos una clase que contiene el _driver_ y la conexión y llamamos a sus métodos de control:
 
 ******************VIDEOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO***********
 
-como se puede ver en el vídeo, tenemos ya soporte de robots reales incluso con el caso de robots con controladores caseros. Se tendrá que estudiar la posibilidad de inclusión de _drivers_ implementados or los clientes para sus propios robots al mecanismo de Ejecución Mixta.
+como se puede ver en el vídeo, tenemos ya soporte de robots reales incluso con el caso de robots con controladores caseros. Se tendrá que estudiar la posibilidad de inclusión de _drivers_ implementados por los clientes para sus propios robots al mecanismo de Ejecución Mixta.
 
 
 ## Semanas 42 y 43
 
-Para completar los objetivos del proyecto, debemos incluir el soporte para robots reales. Hemos escogido el dron TELLo de DJI/INTEL dado que encaja a la perfección con el supuesto al que está orientado la Ejecución Mixta: robots de los que puedan disponer los usuarios medios. Se trata de un robot de "coste bajo" cuyo uso está muy extendido. Está dotado de estabilización visual y es muy ligeron con una autonomía relativamente extensa para los de su clase. Cuenta con dos cámaras integradas y es programable a través de Python.
+Para completar los objetivos del proyecto, debemos incluir el soporte para robots reales. Hemos escogido el dron TELLO de DJI/INTEL dado que encaja a la perfección con el supuesto al que está orientado la Ejecución Mixta: robots de los que puedan disponer los usuarios medios. Se trata de un robot de "coste bajo" cuyo uso está muy extendido. Está dotado de estabilización visual y es muy ligero, con una autonomía relativamente extensa para los de su clase. Cuenta con dos cámaras integradas y es programable a través de Python.
 
 Hemos dedicado estas semanas a la construcción de un _driver_ que nos permita controlar el dron no sólo a través de comandos de velocidad (usando las órdenes para las que está preparado este robot), sino también por posición. Además hemos incluido un método de reenvio de mensajes a través de una implementación casera de un mecanismo TCP (experimentamos la pérdida de algunos mensajes, en especial al controlar por posición, dado que el receptor del dron sólo soporta mensajes bajo canales UDP).
 
 El _driver_ cuenta también con hilos de recepción de mensajes de texto, para acceder a los datos de batería, posición relativa, altura, estado, etc. y también para la recepción de vídeo. 
 
-Hemos estado probando el controlador casero construido para el dron de manera local con pequeños programas compuestos por una declaración inicial y un bucle de instrucicones sencillas, de manera similar a como se implementará en forma de nodo en los cuadenrillos de los ejercicios que hemos construido para nuestra aplicaicón web.
+Hemos estado probando el controlador casero construido para el dron de manera local con pequeños programas compuestos por una declaración inicial y un bucle de instrucciones sencillas, de manera similar a como se implementará en forma de nodo en los cuadenrillos de los ejercicios que hemos construido para nuestra aplicaicón web.
 
 ## Semana 41
 
-Dado el reciente éxito con las simulaciones, hemos dedicado esta semana a solventar un problema que llevábamos arrastrando unas semanas: los errores relacionados con el CORS (_Cross-origin resource sharing_). Básicamente, este tipo de errores se producen al tratar de solicitar recursos restringidos a un servidor desde otro servidor diferente desde el que se obtuvo el primer recurso, es decir, si se solicita en primera instancia la plantilla HTML de una página web a nuestro servidor y luego se solicita como parte del contenido de la misma los recursos de otro servidor como el de Jupyter o Gzweb. En algunos navegadores el motor de comunicación incluye ciertas cabeceras, como _Access-Control-Allow-Origin_ que rellenan con la información necesaria para "esquivar", este tipo de errores. Sin embargo, muchos otros no lo implementan ya que puede conllevar problemas de seguridad. Es por eso que la solución a estos errores suele recaer sobre la parte de servidor web. Por suerte, dado que el código de la aplicación nos pertenece, podemos establecer la configuración necesaria en nuestras respuestas HTTP:
+Dado el reciente éxito con las simulaciones, hemos dedicado esta semana a solventar un problema que llevábamos arrastrando unas semanas: los errores relacionados con el CORS (_Cross-origin resource sharing_). Básicamente, este tipo de errores se producen al tratar de solicitar recursos restringidos a un servidor desde otro servidor diferente desde el que se obtuvo el primer recurso, es decir, si se solicita en primera instancia la plantilla HTML de una página web a nuestro servidor y luego se solicita como parte del contenido de la misma los recursos de otro servidor como el de Jupyter o Gzweb. En algunos navegadores el motor de comunicación incluye ciertas cabeceras, como _Access-Control-Allow-Origin_ que rellenan con la información necesaria para "esquivar" este tipo de errores. Sin embargo, muchos otros no lo implementan ya que puede conllevar problemas de seguridad. Es por eso que la solución a estos errores suele recaer sobre la parte de servidor web. Por suerte, dado que el código de la aplicación nos pertenece, podemos establecer la configuración necesaria en nuestras respuestas HTTP:
 
 ```bash
 Access-Control-Allow-Origin = "*"
@@ -59,7 +59,7 @@ De cara al lanzamiento de la nueva imagen, se hace necesario exponer también el
 
 ## Semana 39
 
-Estos días se han dedicado a la construcción del _back-end_ del ejercicio del SigueLíneas con Fórmula 1. Se trata de un nodo académico en Python, construído bajo la misma filosofía iterativa que el ejercicio del Filtro de Color, que dispone tanto de los métodos de acceso a sensores y actuadores del robot (HAL API) como del establecimiento de los canles ROS de comunicación para poder enlazar el simulador con el código que se ejecuta en el cuadernillo. Esto es de alguna manera un mecanismo de intercomunicación que sucederá en el interior del contedor, pasando por el secuenciador. Los canales establecidos publican o se suscriben a los siguientes _topics_:
+Estos días se han dedicado a la construcción del _back-end_ del ejercicio del SigueLíneas con Fórmula 1. Se trata de un nodo académico en Python, construído bajo la misma filosofía iterativa que el ejercicio del Filtro de Color, que dispone tanto de los métodos de acceso a sensores y actuadores del robot (HAL API) como del establecimiento de los canles ROS de comunicación para poder enlazar el simulador con el código que se ejecuta en el cuadernillo. Esto es de alguna manera un mecanismo de intercomunicación que sucederá en el interior del contenedor, pasando por el secuenciador. Los canales establecidos publican o se suscriben a los siguientes _topics_:
 
 ```
 ~$ rostopic list
@@ -81,7 +81,7 @@ Estos días se han dedicado a la construcción del _back-end_ del ejercicio del 
 /tf
 ```
 
-Hemos enriquecido este último para que pueda gestionar y redirigir adecuadamente los mensajes que provienen o van destinados a Gazebo. Así, desde el cuadernillo se instancia un objeto de la clase FollowLine() que incluirá este API de acceso y uso para controlar el robot de manera sencilla, y la simulación quedará lanzada también dentro del contedor de Ejecución Mixta y en constante comunicación con quien lo requiera a través de los canales anteriores.
+Hemos enriquecido este último para que pueda gestionar y redirigir adecuadamente los mensajes que provienen o van destinados a Gazebo. Así, desde el cuadernillo se instancia un objeto de la clase FollowLine() que incluirá este API de acceso y uso para controlar el robot de manera sencilla, y la simulación quedará lanzada también dentro del contenedor de Ejecución Mixta y en constante comunicación con quien lo requiera a través de los canales anteriores.
 
 ## Semana 38
 
@@ -89,7 +89,7 @@ Ya hemos probado la Ejecución Mixta con cuadernillos que sólo requieren del us
 
 Para ello, hemos incluído la versión 9 de Gazebo en el DockerFile del contenedor y hemos añadido el paquete de Gzweb (un interfaz web para el simulador Gazebo) que nos permitirá servir la interfaz de Gazebo a través de la web en un único _endpoint_ (conjunto ip:puerto) definido. También hemos enriquecido el secuenciador para pode rindicar qué simulación se debe lanzar. Para ello, hemos utilizado el método de organización de simulaciónes de ROS a través de LAUNCHERS (ficheros XML con extensión _.launch_) que nos permiten lanzar a la vez simulaciones con Gazebo y nodos que se comunican a través de ROS. Comenzamos a preparar el primer mundo de simulación: _f1_simplecircuit.launch_.
 
-![FALTA IMAGEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN********************](https://github.com/cawadall/TFM-Carlos-Awadallah/blob/master/docs/img/f1_simplecircuit.png)
+![F1 Circuit](https://github.com/cawadall/TFM-Carlos-Awadallah/blob/master/docs/img/f1_simplecircuit.png)
 
 Como se puede ver, se trata de un circuito de carreras con un robot F1 autónomo objeto de control. El ejercicio que plantearemos sobre esta simulación es el clásico Sigue-Líneas que tendrá por objetivo completar una vuelta al circuito sin perder la línea roja, con un simple control por desviación.
 
@@ -97,7 +97,7 @@ Como se puede ver, se trata de un circuito de carreras con un robot F1 autónomo
 
 Esta semana hemos finalizado la integración del servicio en producción y hemos aprendido a organizar, ubicar y parametrizar correctamente la aplicación en Django para entornos de producción. El resultado es que finalmente es posible acceder a la aplicación robótica en el dominio test.jderobot.org a través de la web, siempre y cuando se disponga de conexión de red, y testar la Ejecución Mixta de manera realmente remota.
 
-![FALTA IMAGEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN****************+](https://github.com/cawadall/TFM-Carlos-Awadallah/blob/master/docs/img/remote_server.png)
+![Remote Server](https://github.com/cawadall/TFM-Carlos-Awadallah/blob/master/docs/img/remote_server.png)
 
 Paralelamente hemos completado el aislamiento del módulo orquestador del inicio de la Ejecución Mixta, al que hemos llamado secuenciador, a través de un ENTRYPOINT con parámetros de entrada que permite establecer qué herramientas se van usar, que aplicaciónes auxiliares se van a requerir y con qué ficheros de configuración o modelos se deben lanzar dichas aplicaciones.
 
@@ -246,7 +246,7 @@ También hemos revisitado la psibilidad de reemplazar el token de autenticación
 
 Una vez el servidor con la aplicación ha sido levantado, el lado dliente se prepará de tal manera que la Ejecución Mixta funcione a través de la imagen instalada. La intención es que los usuarios que acceden a la aplicación robótica no deban instalar ninguna herramienta, sino que serán provistos de la imagen docker de manera muy simple que les ahorrará ese proceso de instalación y puesta a punto. Por ello, esta imagen será extendida en los próximos días con aquellas herramientas que más se utilizan en el campo de la robótica, además de otras de nuestra elección cuya utilidad se vió durante el proceso de investigación (servidor de WebSockets, extensiones de Jupyter).
 
-Por otro lado, pasaremos una serie de test para verificar que el contedor permite el accedo a la webcam local, que tiene conectividad de red actuando como una subred de aquella en la que está contenido y también que hay acceso al _hardware_ "externo", conectado a través de puertos USB. Con ello, podremos preparar entornos (en forma de ejercicios) que nos permitan probar la Ejecución Mixta con  cámaras integradas e incluso interfaces de robots reales de los que disponga el cliente.
+Por otro lado, pasaremos una serie de test para verificar que el contenedor permite el accedo a la webcam local, que tiene conectividad de red actuando como una subred de aquella en la que está contenido y también que hay acceso al _hardware_ "externo", conectado a través de puertos USB. Con ello, podremos preparar entornos (en forma de ejercicios) que nos permitan probar la Ejecución Mixta con  cámaras integradas e incluso interfaces de robots reales de los que disponga el cliente.
 
 ## Semana 28
 
