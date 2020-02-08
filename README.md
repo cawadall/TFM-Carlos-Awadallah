@@ -89,10 +89,15 @@ El uso es por tanto muy simple y no requiere la instalación de ningún módulo 
 <a name="4.1-instalacion-cliente"></a>
 ### 4.1. Instalación para Cliente
 
-El cliente Web sólo debe instalar Docker para funcionar, dado que todo lo demás le es transparente. Para ello, ejecutar la siguiente instrucción:
+El cliente Web sólo debe instalar Docker para funcionar, dado que todo lo demás le es transparente. Para ello, ejecutar las siguientes instrucciónes (extraídas de la documentación oficial):
 
 ```bash
-pip install docker
+sudo apt update
+sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+sudo apt update
+sudo apt install -y docker-ce
 ```
 
 <a name="4.2-instalacion-desarrollador"></a>
