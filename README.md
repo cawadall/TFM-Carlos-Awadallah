@@ -130,13 +130,14 @@ sudo apt-get install -y python-mysqldb
 ```
 
 Después, depenediendo de la distribución del OS del servidor (Ubuntu 16.04 ó 18.04), hacer:
+
 ---
 - Ubuntu 16.04
 ---
 Meter la contraseña _root_
 
 ---
--Ubuntu 18.04
+- Ubuntu 18.04
 ---
 configuración inicial
 
