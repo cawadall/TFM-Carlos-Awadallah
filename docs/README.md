@@ -24,7 +24,8 @@ Con el _driver_ de Tello ya debidamente probado y arreglado, hemos implementado 
 
 Así, instanciamos una clase que contiene el _driver_ y la conexión y llamamos a sus métodos de control:
 
-******************VIDEOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO***********
+##### [YOUTUBE VIDEO] Square With Tello Exercise
+[![TDI_practice1](https://img.youtube.com/vi/4GVvF_ce6Ko/0.jpg)](https://www.youtube.com/watch?v=4GVvF_ce6Ko "")
 
 como se puede ver en el vídeo, tenemos ya soporte de robots reales incluso con el caso de robots con controladores caseros. Se tendrá que estudiar la posibilidad de inclusión de _drivers_ implementados por los clientes para sus propios robots al mecanismo de Ejecución Mixta.
 
@@ -53,7 +54,8 @@ De esta manera solucionamos los errores de CORS que obteníamos en especial del 
 
 Hemos completado el soporte de simulación y reconstruido la imagen de Ejecución Mixta para incorporar los nuevos cambios. En este punto disponemos de una herramienta multiplataforma que permite también simular robots:
 
-******************VIDEOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO***********
+##### [YOUTUBE VIDEO] Follow Line F1 Simulation Exercise
+[![TDI_practice1](https://img.youtube.com/vi/39MVVn3u8SE/0.jpg)](https://www.youtube.com/watch?v=39MVVn3u8SE "")
 
 De cara al lanzamiento de la nueva imagen, se hace necesario exponer también el puerto en el que correrá GzWeb, el cual hemos establecido de manera fija, para que la aplicación remota se conecte a él. También hemos tenido en cuenta la experiencia de usuario, mejorando los modelos de simulación y ocultando la bara lateral para evitar distracciones.
 
