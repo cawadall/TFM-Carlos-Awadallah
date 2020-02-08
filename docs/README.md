@@ -89,7 +89,7 @@ Ya hemos probado la Ejecución Mixta con cuadernillos que sólo requieren del us
 
 Para ello, hemos incluído la versión 9 de Gazebo en el DockerFile del contenedor y hemos añadido el paquete de Gzweb (un interfaz web para el simulador Gazebo) que nos permitirá servir la interfaz de Gazebo a través de la web en un único _endpoint_ (conjunto ip:puerto) definido. También hemos enriquecido el secuenciador para pode rindicar qué simulación se debe lanzar. Para ello, hemos utilizado el método de organización de simulaciónes de ROS a través de LAUNCHERS (ficheros XML con extensión _.launch_) que nos permiten lanzar a la vez simulaciones con Gazebo y nodos que se comunican a través de ROS. Comenzamos a preparar el primer mundo de simulación: _f1_simplecircuit.launch_.
 
-![FALTA IMAGEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN********************](https://github.com/cawadall/TFM-Carlos-Awadallah/docs/img/f1_simplecircuit.png)
+![FALTA IMAGEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN********************](https://github.com/cawadall/TFM-Carlos-Awadallah/blob/master/docs/img/f1_simplecircuit.png)
 
 Como se puede ver, se trata de un circuito de carreras con un robot F1 autónomo objeto de control. El ejercicio que plantearemos sobre esta simulación es el clásico Sigue-Líneas que tendrá por objetivo completar una vuelta al circuito sin perder la línea roja, con un simple control por desviación.
 
@@ -97,7 +97,7 @@ Como se puede ver, se trata de un circuito de carreras con un robot F1 autónomo
 
 Esta semana hemos finalizado la integración del servicio en producción y hemos aprendido a organizar, ubicar y parametrizar correctamente la aplicación en Django para entornos de producción. El resultado es que finalmente es posible acceder a la aplicación robótica en el dominio test.jderobot.org a través de la web, siempre y cuando se disponga de conexión de red, y testar la Ejecución Mixta de manera realmente remota.
 
-![FALTA IMAGEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN****************+](https://github.com/cawadall/TFM-Carlos-Awadallah/docs/img/remote_server.png)
+![FALTA IMAGEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEN****************+](https://github.com/cawadall/TFM-Carlos-Awadallah/blob/master/docs/img/remote_server.png)
 
 Paralelamente hemos completado el aislamiento del módulo orquestador del inicio de la Ejecución Mixta, al que hemos llamado secuenciador, a través de un ENTRYPOINT con parámetros de entrada que permite establecer qué herramientas se van usar, que aplicaciónes auxiliares se van a requerir y con qué ficheros de configuración o modelos se deben lanzar dichas aplicaciones.
 
@@ -109,7 +109,7 @@ También hemos incluido Workers de Python para la gestión del paralelismo y evi
 
 Como ya se anticipó la semana pasada, la mayoría de los servicios web actuales se sirven bajo HTTPS porque pueden intercambiar información delicada (datos personales, contraseñas, cuentas bancarias,...). Es por eso que configuramos nuestra capa de seguridad con el protocolo SSL, para lo cual hacen falta certificados de clave simétrica. Tras unos días de investigación, encontramos la herramienta _Certbot_ (antiguo _Letsencrypt_) que nos permite obtener certificados gratuitos para nuestro sitio web. Esta herramienta promueve la web segura y gratuita, y por tanto se trata de software libre fácilmente instalable y manejable:
 
-![Certobot](https://github.com/cawadall/TFM-Carlos-Awadallah/docs/img/certbot.png)
+![Certobot](https://github.com/cawadall/TFM-Carlos-Awadallah/blob/master/docs/img/certbot.png)
 
 Contiene una receta de instalación y uso que permite establecer el sistema en uso y la tecnología de servidor para obtener los certificados para nuestros dominios en un único paso:
 
@@ -321,7 +321,7 @@ Se ha construido la primera versión del servidor de pruebas en Django. Este ser
 
 A través de la operación POST y colocando la ruta adecuada, el cuerpo del mensaje HTTP debidamente rellenado y con las opciones correctas de seguridad en las cabeceras (principalmente el token que el Servidor de Cuadernillos de Jupyter establece para la autenticación y creación de sesiones de usuario), conseguimos que el _kernel_ reciba el cuadernillo:
 
-![POST](https://github.com/cawadall/TFM-Carlos-Awadallah/docs/img/POST_REST_API.png)
+![POST](https://github.com/cawadall/TFM-Carlos-Awadallah/blob/master/docs/img/POST_REST_API.png)
 
 Ahora debemos investigar las opciónes para la solicitud y envío del resto de ficheros de código en los que se basa el ejercicio (su cuadernillo). También estudiaremos si exitse la posibilidad de sustituir el token de autenticación por _cookies_ que el Servidor de Jupyter establecen en el navegador.
 
@@ -335,7 +335,7 @@ Hemos empezado a trabajar en un Servidor de Test. Exploramos dos rutas:
 
 Dado que la segunda opción es más interesante, estudiamos el [REST API](https://github.com/jupyter/jupyter/wiki/Jupyter-Notebook-Server-API), que contiene algunas opciónes que nos pueden resultar úriles.
 
-![REST API](https://github.com/cawadall/TFM-Carlos-Awadallah/docs/img/REST_API.png)
+![REST API](https://github.com/cawadall/TFM-Carlos-Awadallah/blob/master/docs/img/REST_API.png)
 
 ## Semana 18
 
@@ -370,11 +370,11 @@ Para los controles hemos profundizado en los [_widgets_ de Colaboratoy]((https:/
 
 La primera aproximación a la solución del problema pasa por estudiar la solución de Google Colaboratory, que si bien no es nuestro caso exacto, debe contener etapas comunes en tanto que se comparte un elemento _hardware_ específico. Hemo subido un Cuadernillo que hemos creado a su servidor como prueba, y hemos usado sus mecanismo de conexión a un entorno de ejecución local o [_local runtime_](https://research.google.com/colaboratory/local-runtimes.html).
 
-![local_runtimes](https://github.com/cawadall/TFM-Carlos-Awadallah/docs/img/local_runtimes_colab.png)
+![local_runtimes](https://github.com/cawadall/TFM-Carlos-Awadallah/blob/master/docs/img/local_runtimes_colab.png)
 
 Para tratar de hacernos una idea de su comportammiento, hemos utilizado WireShark para capturar el tráfico en la interfaz de _loopback_ del sistema en el que se hizo la prueba, filtrando el tráfico por el puerto en el que se lanzó el _kernel_ que conforma el entorno local al que el servidor de colab se conecta.
 
-![wireshark](https://github.com/cawadall/TFM-Carlos-Awadallah/docs/img/wireshark_localruntimes.png)
+![wireshark](https://github.com/cawadall/TFM-Carlos-Awadallah/blob/master/docs/img/wireshark_localruntimes.png)
 
 En un intento d eobtener más información, realizamos algunas pruebas como el intento de inicialización del entorno local sin haber levantado el _kernel_ o como tirar el _kernel_ en medio de una sesión, pero no obtuvimos resultados concluyentes: la aplicación estaba preparada para tales situaciónes y no mostraba comportamientos extraños que pudieran sernos útiles, simplemente se reconectaba a un entorno de ejecución remota, haciendo uso de uno de los servidores de sus granjas de ordenadores.
 
@@ -394,9 +394,9 @@ Los próximos días se terminará de estudiar estos recursos para extraer la may
 
 Hemos hecho algunas mejoras en relación a la experiencia de usuario, como eliminar la salida de las celdillas cuando el usuario pulsa sobre cualquiera de los botones implementados, de tal manera que no se ven forzados a reiniciar el _kernel_ en el proceso de escritura del código y de depuración. También hemos cambiado los dos botones de "_Play Code_" y "_Pause Code_" por un único botón conmutable, que lo simplifica: 
 
-![playtoggle](https://github.com/cawadall/TFM-Carlos-Awadallah/docs/img/playtoggle.png)
+![playtoggle](https://github.com/cawadall/TFM-Carlos-Awadallah/blob/master/docs/img/playtoggle.png)
 
-![pausetoggle](https://github.com/cawadall/TFM-Carlos-Awadallah/docs/img/pausetoggle.png)
+![pausetoggle](https://github.com/cawadall/TFM-Carlos-Awadallah/blob/master/docs/img/pausetoggle.png)
 
 Casi tenemos preparado el primer ejercicio y podemos pasar a la parte más interesante del proyecto, en la que se tratará de construir una aplicación robótica que sirva el ejercicio diseñado, y una herramienta que sintonice ambas partes, cliente y servidor, para compartan una ejecución convenientemente en la que no se quiera mucho consumo de recursos en el lado servidor.
 
@@ -433,12 +433,12 @@ Como parte del proceso de refinado de la visualización y la interacción con de
 
 El enlace superior contiene una pequeña descripción del repositorio y las extensiones, una receta de instalación y una guía de uso. Hemos instalado el proyecto como se mostraba y probado las extensiones disponibles. De entre todas hemos visto especial potencial en dos de ellas: _Initialization Cell_ y _Hide Cell_. Una vez finalizada la instalación se puede acceder a ellas incluso de forma gráfica en la barra de herramientas de la sección _tree_ del interfaz de Jupyter, por lo que tienen  muy buena integración con la plataforma.
 
-![nbextensions](https://github.com/cawadall/TFM-Carlos-Awadallah/docs/img/nbextensions1.png)
+![nbextensions](https://github.com/cawadall/TFM-Carlos-Awadallah/blob/master/docs/img/nbextensions1.png)
 
 ---
 En cuanto a la extensión _Initialization Cell_, puede habilitarse a través del configurador de extensiónde de Jupyter, [jupyter_nbextensions_configurator](https://github.com/Jupyter-contrib/jupyter_nbextensions_configurator):
 
-![jupyter_nbextensions_configurator](https://github.com/cawadall/TFM-Carlos-Awadallah/docs/img/nbextensions2.png)
+![jupyter_nbextensions_configurator](https://github.com/cawadall/TFM-Carlos-Awadallah/blob/master/docs/img/nbextensions2.png)
 
 En función del sistema en el que se intenten habilitar, se puede encontrar problemas de falta de permisos. En tal caso, pueden habilitarse haciendo uso de un terminal, con:
 
@@ -448,11 +448,11 @@ sudo jupyter nbextension enable init_cell/main
 
 Una vez habilitada, se añaden las barras de herramientas asociadas a esta extensión del siguiente modo:
 
-![toolbars](https://github.com/cawadall/TFM-Carlos-Awadallah/docs/img/nbextensions5.png) 
+![toolbars](https://github.com/cawadall/TFM-Carlos-Awadallah/blob/master/docs/img/nbextensions5.png) 
 
 y se accede a esta barra de herramientas en cada celdilla que se quiera establcer como celdilla de inicialización cuyo código se ejecutará según se cargue el cuadernillo. Así, se marcaría como "_initialization cells_" las celdillas deseadas como se muestra:
 
-![checkbox](https://github.com/cawadall/TFM-Carlos-Awadallah/docs/img/nbextensions3.png)
+![checkbox](https://github.com/cawadall/TFM-Carlos-Awadallah/blob/master/docs/img/nbextensions3.png)
 
 ---
 De manera similar a la anterior, hay otra extensión que permite ocultar las celdillas que se marquen, esta es _Hide Cell_. En conjunto con la anterior, podemos añadir al cuadernillo funcionalidad adicional sin que el código que la genera o gestiona aparezca visible en el cuadernilo, por ejemplo, podremos añadir botones ricos en acciones cuyas declaraciónes no estén visibles. De nuevo, hay que habilitar esta extensión con:
@@ -463,7 +463,7 @@ sudo jupyter nbextension enable hide_input/main
 
 Después, como se muestra [aquí](https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/nbextensions/hide_input/readme.html), tendremos que marcar aquellas celdillas que queramos ocultar. Se ha hechomodificando los metadatos de las celdillas en cuestión: 
 
-![metadata](https://github.com/cawadall/TFM-Carlos-Awadallah/docs/img/nbextensions4.png)
+![metadata](https://github.com/cawadall/TFM-Carlos-Awadallah/blob/master/docs/img/nbextensions4.png)
 
 ---
 El resultado es el siguiente: 
@@ -513,11 +513,11 @@ Incluímos en este primer paso un fichero de configuración para que el _back-en
 
 Plantemos también una primera versión de la solución para ser utilizada de aquí en adelnte como test para el proceso de implementación del resto del mecanismo de ejecución compartida. 
 
-![Input](https://github.com/cawadall/TFM-Carlos-Awadallah/docs/img/inputImage.png)
-![Smooth](https://github.com/cawadall/TFM-Carlos-Awadallah/docs/img/smoothImage.png)
-![HSV](https://github.com/cawadall/TFM-Carlos-Awadallah/docs/img/hsvImage.png)
-![Threshold](https://github.com/cawadall/TFM-Carlos-Awadallah/docs/img/thresholdImage.png)
-![Output](https://github.com/cawadall/TFM-Carlos-Awadallah/docs/img/filteredImage.png)
+![Input](https://github.com/cawadall/TFM-Carlos-Awadallah/blob/master/docs/img/inputImage.png)
+![Smooth](https://github.com/cawadall/TFM-Carlos-Awadallah/blob/master/docs/img/smoothImage.png)
+![HSV](https://github.com/cawadall/TFM-Carlos-Awadallah/blob/master/docs/img/hsvImage.png)
+![Threshold](https://github.com/cawadall/TFM-Carlos-Awadallah/blob/master/docs/img/thresholdImage.png)
+![Output](https://github.com/cawadall/TFM-Carlos-Awadallah/blob/master/docs/img/filteredImage.png)
 
 También hemos añadido un botón para la visualización de las imágenes en el propio cuadernillo, con fines depurativos. Iremos refniando este mecanismo para tratar de conseguir un flujo de vídeo.
 
