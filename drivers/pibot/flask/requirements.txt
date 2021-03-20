@@ -11,7 +11,7 @@ itsdangerous==1.1.0
 jderobot-config==0.1.1
 jderobot-interfaces-python==0.1.5
 jderobot-interfaces-kibotics==0.1.1
-Jinja2==2.10
+Jinja2==2.11.3
 MarkupSafe==1.1.0
 numpy==1.16.0
 opencv-python==3.4.4.19
